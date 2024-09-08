@@ -30,7 +30,7 @@ const NavBar = ({ toggleDarkMode, darkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const gotoemail = () => {
-    window.location.href = "mailto:siddhant.garg@gmail.com";
+    window.location.href = "mailto:siddhant.rbl2016@gmail.com";
   };
 
   // Toggle the navbar

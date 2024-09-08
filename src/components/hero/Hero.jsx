@@ -14,7 +14,7 @@ import imagemine from "../../assets/IMG_1555.jpg";
 
 const Hero = () => {
   const gotoemail = () => {
-    window.location.href = "mailto:siddhant.garg@gmail.com";
+    window.location.href = "mailto:siddhant.rbl2016@gmail.com";
   };
 
   return (
