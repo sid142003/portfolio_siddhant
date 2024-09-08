@@ -4,7 +4,7 @@ import {
   AiFillGithub,
   AiFillInstagram,
 } from "react-icons/ai";
-import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebook, FaLinkedinIn, FaPhoenixSquadron, FaPhone } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { FaPlay } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
@@ -104,6 +104,11 @@ const Hero = () => {
                   <AiFillTwitterCircle className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
                 </a>
               </li> */}
+              <li>
+                <a href="tel:+918090453205">
+                  <FaPhone className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
