@@ -32,7 +32,7 @@ const Resume = () => {
               {
                 role: "Full Stack Developer Intern",
                 company: "GPT Innovations, Inc",
-                period: "February 2024 - Present",
+                period: "February 2024 - 09/2024",
                 description: "Developed and launched two professional websites, elevating online sales by 754% and increasing web traffic by 54%. Implemented an admin panel to optimize data integration and automate workflows using MySQL. Led AI transcription integration for QuickScribe, enhancing medical documentation efficiency by 95% and spearheaded the use of FHIR and Meldrx APIs for healthcare system interoperability."
               },
               {
