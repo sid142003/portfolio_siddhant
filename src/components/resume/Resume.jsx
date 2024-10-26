@@ -35,6 +35,13 @@ const Resume = () => {
                 period: "February 2024 - September 2024",
                 description: "Developed and launched two professional websites, elevating online sales by 754% and increasing web traffic by 54%. Implemented an admin panel to optimize data integration and automate workflows using MySQL. Led AI transcription integration for QuickScribe, enhancing medical documentation efficiency by 95% and spearheaded the use of FHIR and Meldrx APIs for healthcare system interoperability."
               },
+            {
+              role: "Freelancer(Wix)",
+                company: "Datum Intelligence",
+                period: "September 2024 - October 2024",
+                description: "Managed and designed a professional Wix website, including store setup and customization. Utilized Wix Velo for enhanced website functionality and dynamic web elements. Improved user experience through responsive design and seamless store integration. Worked on SEO."
+              },
+            
               {
                 role: "Full Stack Developer Intern",
                 company: "Visafied",
