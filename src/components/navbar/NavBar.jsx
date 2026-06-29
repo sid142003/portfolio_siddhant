@@ -4,120 +4,98 @@ import { HiMenu } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
 
 const navItems = [
-  {
-    id: 0,
-    name: "home",
-  },
-  {
-    id: 1,
-    name: "skills",
-  },
-  {
-    id: 2,
-    name: "works",
-  },
-  {
-    id: 3,
-    name: "resume",
-  },
-  {
-    id: 4,
-    name: "contact",
-  },
+  { id: 0, name: "home", href: "#home" },
+  { id: 1, name: "skills", href: "#skills" },
+  { id: 2, name: "works", href: "#works" },
+  { id: 3, name: "resume", href: "#resume" },
+  { id: 4, name: "contact", href: "#contact" },
 ];
 
 const NavBar = ({ toggleDarkMode, darkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+
   const gotoemail = () => {
     window.location.href = "mailto:siddhant.rbl2016@gmail.com";
   };
 
-  // Toggle the navbar
-  const toggleNav = (name) => {
-    setIsOpen(!isOpen);
-    setActiveIndex(name === activeIndex ? null : name);
-  };
-
-  const [scrollPosition, setScrollPosition] = useState(0);
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div
-      className={`w-full mx-auto  fixed top-0 py-5 sm:py-4 z-30 ${
-        scrollPosition > 0 ? `bg-white shadow-md` : "bg-transparent"
-      } `}
+      className={`w-full fixed top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#0f0f0f]/95 backdrop-blur-md border-b border-white/10 shadow-lg"
+          : "bg-transparent"
+      }`}
     >
-      <nav className=" container m-auto flex items-center justify-between">
-        <div data-aos="fade-down" className="logo">
-          <Link
-            onClick={() => window.scrollTo(0, 0)}
-            to="/"
-            className="text-3xl font-bold sm:text-3xl"
-          >
-            Web Dev
-          </Link>
-        </div>
-        <div
-          data-aos="fade-down"
-          className="nav-items flex items-center space-x-11"
+      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link
+          onClick={() => window.scrollTo(0, 0)}
+          to="/"
+          className="text-2xl font-black text-white hover:text-yellow-400 transition-colors"
         >
-          {/* hamburger */}
-          <button
-            onClick={toggleNav}
-            className="cursor-pointer text-2xl hidden md:block"
-          >
-            <HiMenu size={25} />
-          </button>
+          Siddhant<span className="text-yellow-400">.</span>
+        </Link>
 
-          <ul
-            className={`flex items-center space-x-11 ${
-              !isOpen ? "md:flex" : "md:right-[0%]"
-            } md:flex-col md:absolute m-auto md:top-0 md:right-[-100%] md:w-[78%] md:h-screen md:bg-white `}
-          >
-            {/* Use a button tag for better accessibility */}
-            <button
-              onClick={toggleNav}
-              className={`text-3xl hidden md:block relative right-0 top-4 container mx-auto`}
-            >
-              <RxCross2 size={25} />
-            </button>
-            {navItems.map((item) => (
-              <li
-                key={item.id}
-                className="md:m-6 md:flex md:gap-6 md:items-center md:justify-center"
+        {/* Desktop nav */}
+        <ul className="flex items-center gap-8 md:hidden">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a
+                href={item.href}
+                className="text-gray-300 hover:text-yellow-400 font-semibold text-sm uppercase tracking-wider transition-colors"
               >
+                {item.name}
+              </a>
+            </li>
+          ))}
+          <a
+            onClick={gotoemail}
+            className="cursor-pointer bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold hover:bg-yellow-300 transition-all text-sm"
+          >
+            Hire Me
+          </a>
+        </ul>
+
+        {/* Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="hidden md:flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 border border-white/15 text-white hover:border-yellow-400/50 transition-all"
+        >
+          {isOpen ? <RxCross2 size={20} /> : <HiMenu size={20} />}
+        </button>
+      </nav>
+
+      {/* Mobile Drawer */}
+      {isOpen && (
+        <div className="hidden md:block absolute top-full left-0 w-full bg-[#0f0f0f]/98 backdrop-blur-xl border-b border-white/10 px-4 py-6">
+          <ul className="flex flex-col gap-4">
+            {navItems.map((item) => (
+              <li key={item.id}>
                 <a
-                  onClick={() => toggleNav(item.name)}
-                  href={`#${item.name}`}
-                  className={`uppercase cursor-pointer text-black hover:text-yellow-600 font-bold ${
-                    item.name === activeIndex ? "text-yellow-600" : ""
-                  }`}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-gray-200 hover:text-yellow-400 font-bold text-lg uppercase tracking-wider transition-colors py-1"
                 >
                   {item.name}
                 </a>
               </li>
             ))}
             <a
-              onClick={gotoemail}
-              
-              className="bg-black text-[1rem] text-white px-8 py-2 rounded-lg font-bold hover:text-yellow-400 md:m-5 md:block md:mx-auto md:w-fit lg:px-3"
+              onClick={() => { gotoemail(); setIsOpen(false); }}
+              className="cursor-pointer mt-2 bg-yellow-400 text-black px-6 py-3 rounded-xl font-bold text-center hover:bg-yellow-300 transition-all"
             >
-              Contact me
+              Hire Me
             </a>
           </ul>
         </div>
-      </nav>
+      )}
     </div>
   );
 };

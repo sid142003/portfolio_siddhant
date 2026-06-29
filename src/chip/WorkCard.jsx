@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
 import { data } from "../data/data";
 import { RxExternalLink } from "react-icons/rx";
 import { AiOutlineGithub } from "react-icons/ai";
@@ -10,92 +9,67 @@ const WorkCard = () => {
 
   return (
     <>
-      {reversedData.map((data) => {
-        return (
-          <div
-            data-aos="zoom-in"
-            key={data.id}
-            className="flex flex-col justify-center items-center gap-4"
-          >
-            <POPUP className="img-content relative">
-              <div className="h-[280px] w-[380px] hover:scale-125 transition duration-500 cursor-pointer shadow-xl rounded-md overflow-hidden sm:h-[260px] sm:w-[92%] sm:bg-cover mx-auto ">
-                <img
-                  src={data.img}
-                  alt={data.title}
-                  className=" object-fit w-full h-full hover:scale-125 transition duration-500 cursor-pointer"
-                />
-              </div>
-
-              <div
-                className={` popup w-full  h-[280px] shadow-xl rounded-md overflow-hidden sm:h-[260px] sm:w-[92%] p-4`}
-              >
-                <p className=" text-gray-900 text-base leading-[1.4] text-justify w-[90%]">
-                  {data.desc}
-                </p>
-                <div className=" flex items-center justify-center gap-4">
-                  { data.link ?
-                  <Link
-                  to={data.link}
+      {reversedData.map((item) => (
+        <div
+          data-aos="fade-up"
+          key={item.id}
+          className="group flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] hover-lift hover:border-yellow-400/40 transition-all duration-300"
+        >
+          {/* Image */}
+          <div className="relative overflow-hidden h-[200px] sm:h-[180px]">
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            {/* Overlay on hover */}
+            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+              {item.link && (
+                <Link
+                  to={item.link}
                   target="_blank"
-                  className="  mt-3 rounded-md shadow-md p-1 px-2 flex gap-2 items-center justify-center font-medium"
+                  className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold text-sm hover:bg-yellow-300 transition-all"
                 >
-                  <RxExternalLink className=" text-black bg-white rounded-full border  w-[35px] h-[35px] p-2" />
-                  <p className=" text-black">Demo</p>
-                </Link> : null }
-
-                  
-                  <br className="w-[2px] bg-white" />
-                  <Link
-                    to={data.git}
-                    target="_blank"
-                    className="  mt-3 rounded-md shadow-md p-1 px-2 flex gap-2 items-center justify-center font-medium"
-                  >
-                    <AiOutlineGithub className="  text-black bg-white rounded-full border  w-[35px] h-[35px] p-2" />
-                    <p className=" text-black">Code</p>
-                  </Link>
-                </div>
-              </div>
-            </POPUP>
-            <p className="text-gray-800 text-xl font-medium sm:text-lg">
-              {data.title}
-            </p>
+                  <RxExternalLink /> Demo
+                </Link>
+              )}
+              <Link
+                to={item.git}
+                target="_blank"
+                className="flex items-center gap-2 bg-white/10 text-white border border-white/20 px-4 py-2 rounded-xl font-bold text-sm hover:bg-white/20 transition-all"
+              >
+                <AiOutlineGithub /> Code
+              </Link>
+            </div>
           </div>
-        );
-      })}
+
+          {/* Info */}
+          <div className="p-5">
+            <h3 className="text-white font-black text-lg mb-1 group-hover:text-yellow-400 transition-colors">{item.title}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+            <div className="flex gap-3 mt-4">
+              {item.link && (
+                <Link
+                  to={item.link}
+                  target="_blank"
+                  className="flex items-center gap-1.5 text-yellow-400 text-xs font-bold hover:underline"
+                >
+                  <RxExternalLink /> Live Demo
+                </Link>
+              )}
+              <Link
+                to={item.git}
+                target="_blank"
+                className="flex items-center gap-1.5 text-gray-400 text-xs font-bold hover:text-white transition-colors"
+              >
+                <AiOutlineGithub /> Source Code
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
     </>
   );
 };
 
 export default WorkCard;
-
-const POPUP = styled.div`
-  position: relative;
-  img {
-    &:hover {
-      transform: scaleX(2);
-    }
-  }
-  .popup {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    margin: auto;
-    transition: 0.5s ease;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .icon {
-    color: #fff !important;
-  }
-  &:hover .popup {
-    opacity: 1;
-    color: #fff;
-  }
-`;

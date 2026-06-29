@@ -1,200 +1,105 @@
 import React from "react";
-import ProgressBar from "../../chip/ProgressBar";
-import SkillBox from "../../chip/SkillBox";
-
-import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io";
-import wasp from "../../assets/wasp-logo.png";
-
-import {
-  SiJavascript,
-  SiTailwindcss,
-  SiMongodb,
-  SiExpress,
-  SiSqlite,
-} from "react-icons/si";
-import { GrCode, GrMysql } from "react-icons/gr";
-import { SiNextdotjs } from "react-icons/si";
-import { FaAws, FaReact } from "react-icons/fa";
+import { FaJava, FaPython, FaReact, FaAws, FaDocker, FaGithub, FaGitAlt } from "react-icons/fa";
+import { SiJavascript, SiTypescript, SiTailwindcss, SiSpring, SiMongodb, SiPostgresql, SiMysql, SiFirebase, SiPostman, SiExpress, SiRazorpay } from "react-icons/si";
 import { IoLogoNodejs } from "react-icons/io";
+import { GrCode } from "react-icons/gr";
+import { MdOutlineApi } from "react-icons/md";
 
-const Skills = ({ darkMode }) => {
-  
+// Row 1 – Languages & Frontend
+const row1 = [
+  { name: "Java", icon: <FaJava /> },
+  { name: "JavaScript", icon: <SiJavascript /> },
+  { name: "TypeScript", icon: <SiTypescript /> },
+  { name: "Python", icon: <FaPython /> },
+  { name: "React", icon: <FaReact /> },
+  { name: "React Native", icon: <FaReact /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+  { name: "Redux Toolkit", icon: <GrCode /> },
+  { name: "Vite", icon: <GrCode /> },
+  { name: "Retool", icon: <GrCode /> },
+];
+
+// Row 2 – Backend & APIs
+const row2 = [
+  { name: "Spring Boot", icon: <SiSpring /> },
+  { name: "Spring Security", icon: <SiSpring /> },
+  { name: "Node.js", icon: <IoLogoNodejs /> },
+  { name: "Express.js", icon: <SiExpress /> },
+  { name: "FastAPI", icon: <GrCode /> },
+  { name: "REST APIs", icon: <MdOutlineApi /> },
+  { name: "JWT", icon: <GrCode /> },
+  { name: "Microservices", icon: <GrCode /> },
+  { name: "API Design", icon: <MdOutlineApi /> },
+];
+
+// Row 3 – AI, Cloud, Databases & Integrations
+const row3 = [
+  { name: "OpenAI API", icon: <GrCode /> },
+  { name: "LLM Workflows", icon: <GrCode /> },
+  { name: "RAG Pipelines", icon: <GrCode /> },
+  { name: "AI Voice Agents", icon: <GrCode /> },
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "PostgreSQL", icon: <SiPostgresql /> },
+  { name: "MySQL", icon: <SiMysql /> },
+  { name: "AWS", icon: <FaAws /> },
+  { name: "Docker", icon: <FaDocker /> },
+  { name: "Firebase", icon: <SiFirebase /> },
+  { name: "Twilio", icon: <GrCode /> },
+  { name: "Razorpay", icon: <GrCode /> },
+  { name: "Git", icon: <FaGitAlt /> },
+  { name: "GitHub", icon: <FaGithub /> },
+  { name: "Postman", icon: <SiPostman /> },
+  { name: "CI/CD", icon: <GrCode /> },
+];
+
+const MarqueeRow = ({ items, reverse = false, speed = 35 }) => {
+  // Duplicate items for seamless loop
+  const doubled = [...items, ...items];
   return (
-    <div id="skills">
-      <div className=" container m-auto  mt-16">
-        {/* heading */}
-        <div data-aos="fade-up" className="relative mb-5">
-          <h3 className=" text-3xl font-black text-gray-400 sm:text-2xl">
-            My Skills
-          </h3>
-          <span className="h-[1.1px] right-0 absolute w-[90%] bg-gray-300 block"></span>
-        </div>
-        {/* content*/}
-        <div className="flex md:flex-col ">
-          <div className="left flex-1 w-full">
-            <p
-              data-aos="fade-up"
-              className=" text-gray-700 font-medium w-[100%]"
-            >
-              Here are my skills.
-            </p>
-            {/* left box */}
-            <div
-              data-aos="zoom-in"
-              className="progress flex items-center h-[100%] justify-end md:justify-center"
-            >
-              <div className=" flex flex-col gap-6  w-3/4  my-5 md:w-[90%]">
-                <ProgressBar className="progress" img={wasp} name={"Wasp"} value={90} />
-                <ProgressBar
-                
-                  logo={<SiJavascript />}
-                  name={"Javascript"}
-                  value={90}
-                />
-                <ProgressBar logo={<FaReact />} name={"React Js"} value={98} />
-                <ProgressBar
-                  logo={<SiTailwindcss />}
-                  name={"Tailwind CSS"}
-                  value={80}
-                />
-                <ProgressBar
-                  logo={<IoLogoNodejs />}
-                  name={"Node Js"}
-                  value={95}
-                />
-                <ProgressBar
-                  logo={<SiMongodb />}
-                  name={"MongoDB"}
-                  value={95}
-                />
-                <ProgressBar
-                  logo={<SiExpress />}
-                  name={"Express Js"}
-                  value={95}
-                />
-                <ProgressBar
-                  logo={<GrCode />}
-                  name={"MUI"}
-                  value={90}
-                />
-                <ProgressBar
-                  logo={
-                     <FaAws />
-                  }
-                  name={"AWS"}
-                  value={90}
-                />
+    <div className="flex overflow-hidden w-full relative">
+      {/* Fade edges */}
+      <div className="absolute left-0 top-0 h-full w-16 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to right, #0f0f0f, transparent)" }}></div>
+      <div className="absolute right-0 top-0 h-full w-16 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to left, #0f0f0f, transparent)" }}></div>
 
-                <ProgressBar logo={<GrCode />} name={"Java"} value={95} />
-
-
-                
-              </div>
-            </div>
+      <div
+        className={`flex gap-3 whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        style={{ animationDuration: `${speed}s` }}
+      >
+        {doubled.map((skill, idx) => (
+          <div
+            key={idx}
+            className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 bg-white/[0.06] text-gray-200 text-sm font-semibold hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-200 cursor-default"
+          >
+            <span className="text-yellow-400 text-base hover:text-black">{skill.icon}</span>
+            <span>{skill.name}</span>
           </div>
-          {/* right box */}
-          <div className="right relative flex-1 flex flex-wrap p-5 gap-10 items-center justify-center sm:w-full">
-            <div className="first2 flex flex-col gap-10">
-              <SkillBox
-                logo={<IoLogoNodejs />}
-                black={"white"}
-                white={"black"}
-                skill={"Node Js"}
-              />
-              <SkillBox
-                logo={<SiMongodb />}
-                black={"white"}
-                white={"black"}
-                skill={"MongoDB"}
-              />
-            </div>
-            <div className="last2 flex flex-col gap-10">
-              <SkillBox
-                logo={<SiExpress />}
-                black={"black"}
-                white={"white"}
-                skill={"Express Js"}
-              />
-              <SkillBox
-                className=""
-                logo={
-                  <GrCode/>
-                }
-                black={"black"}
-                white={"white"}
-                skill={"Java"}
-              />
-              <SkillBox
-                logo=
-                {<FaAws />}
-                black={"black"}
-                white={"white"}
-                skill={"AWS"}
-              />
-              <SkillBox
-                logo=
-                {<GrMysql/>}
-                black={"black"}
-                white={"white"}
-                skill={"MySql"}
-              />
-              {/* <SkillBox
-                className=""
-                logo={
-                  <SiNextdotjs className=" text-white bg-black rounded-full h-fit border-white overflow-hidden" />
-                }
-                black={"black"}
-                white={"white"}
-                skill={"Next Js"}
-              /> */}
-            </div>
-          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Skills = () => {
+  return (
+    <div id="skills" className="w-full bg-[#0f0f0f] py-16">
+      <div className="container mx-auto px-4">
+        {/* Section Heading */}
+        <div data-aos="fade-up" className="section-heading mb-12">
+          <h3>My Skills</h3>
+          <span className="divider"></span>
+          <p className="text-gray-400 font-medium text-sm mt-1">
+            A comprehensive list of my technical skills and tools.
+          </p>
         </div>
+      </div>
 
-        {/* icons */}
-        {/* <div
-          data-aos="fade-up"
-          data-aos-duration="1200"
-          className=" container m-auto flex items-center justify-center mt-8 gap-8 md:gap-5"
-        >
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios-filled/50/null/c-plus-plus-logo.png"
-          />
-
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/color/48/null/python--v1.png"
-          />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios/50/null/react-native--v1.png"
-          />
-
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/color/48/null/sass.png"
-            />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios-filled/50/null/git.png"
-            />
-            <img
-              className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-              src="https://img.icons8.com/windows/50/null/sass--v1.png"
-            />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/color/48/null/c-plus-plus-logo.png"
-          />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios-filled/50/null/python.png"
-          />
-          <img className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]" src="https://img.icons8.com/color/48/null/javascript--v1.png"/>
-          <img className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]" src="https://img.icons8.com/color/48/null/nodejs.png"/>
-          <img className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]" src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/null/external-mongodb-a-cross-platform-document-oriented-database-program-logo-shadow-tal-revivo.png"/>
-        </div> */}
+      {/* Marquee rows — full width, no container constraint */}
+      <div className="flex flex-col gap-4 w-full">
+        <MarqueeRow items={row1} reverse={false} speed={30} />
+        <MarqueeRow items={row2} reverse={true}  speed={25} />
+        <MarqueeRow items={row3} reverse={false} speed={40} />
       </div>
     </div>
   );

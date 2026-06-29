@@ -1,148 +1,149 @@
 import React from "react";
+import resumePDF from "../../assets/Resume.pdf";
+import { FiDownload } from "react-icons/fi";
+
+const experiences = [
+  {
+    role: "Software Engineer I",
+    company: "Devsthan, Bengaluru",
+    period: "July 2025 – Present",
+    description:
+      "Delivered a religious full-stack mobile and web platform using React, React Native, Spring Boot, and MongoDB, serving 10K+ users and processing 50K+ orders. Architected 30+ REST APIs with Spring Security & JWT, enabling Rs.2Cr+ in Razorpay transactions. Improved performance via Redux Toolkit (0.19% crash rate). Shipped 12+ Retool apps for OPS workflows.",
+  },
+  {
+    role: "Software Engineer (Independent Consultant)",
+    company: "NextgenApply",
+    period: "July 2025 – August 2025",
+    description:
+      "Designed a React-based dashboard with RBAC. Orchestrated scalable backend pipelines using Python and OpenAI APIs to improve ATS matching accuracy to ~90%. Implemented CI/CD and AWS EC2 Auto Scaling, achieving 70% reduction in infra costs.",
+  },
+  {
+    role: "Software Engineering Intern",
+    company: "Devsthan, Bengaluru",
+    period: "January 2025 – June 2025",
+    description:
+      "Engineered Java-based deep-linking and secure short-link service with token expiry. Integrated Firebase Cloud Messaging (FCM) for real-time notifications across 10K+ active users. Built a React Native Virtual Darshan module handling 8+ real-time event types.",
+  },
+  {
+    role: "Full Stack Developer Intern",
+    company: "GPT Innovations, Inc",
+    period: "February 2024 – December 2024",
+    description:
+      "Delivered full-stack web features reducing form submission time by 66.67%. Built QuickScribe AI transcription (95% efficiency gain), AI Voice Agent with Twilio & Deepgram, FHIR/MeldRx integrations, and automated eligibility bots using PyAutoGUI.",
+  },
+];
+
+const education = [
+  {
+    degree: "B.Tech – Computer Science and Engineering",
+    institution: "IIIT Vadodara, Gujarat",
+    period: "December 2021 – July 2025",
+    detail: "Focused on full-stack development, data structures, algorithms, and system design.",
+  },
+  {
+    degree: "XII – Higher Secondary Education",
+    institution: "S.J.S Public School, Raebareli, UP",
+    period: "Achieved 93.2%",
+    detail: "",
+  },
+  {
+    degree: "X – Senior Secondary Education",
+    institution: "S.J.S Public School, Raebareli, UP",
+    period: "Achieved 95.8%",
+    detail: "",
+  },
+];
+
+const achievements = [
+  {
+    title: "Selected as Backend Developer Mentor",
+    sub: "SSIP 2.0 at IIIT Vadodara",
+    tag: "",
+  },
+  {
+    title: "Idea Accepted under SSIP Gujarat Program",
+    sub: "BUS KAROO – IIIT Vadodara",
+    tag: "1st Category Recognition",
+  },
+];
+
+const Card = ({ children }) => (
+  <div className="relative pl-5 border-l-2 border-yellow-400/40 py-4 hover-lift cursor-default group">
+    <div className="absolute w-3 h-3 rounded-full bg-yellow-400 left-[-7px] top-5 shadow-[0_0_10px_2px_rgba(250,204,21,0.4)]"></div>
+    {children}
+  </div>
+);
 
 const Resume = () => {
   return (
-    <div id="resume" className="container m-auto mt-16">
-      {/* Heading */}
-      <div data-aos="fade-up" className="relative mb-5">
-        <h3 className="text-3xl font-black text-gray-400 sm:text-2xl">
-          Resume
-        </h3>
-        <span className="h-[1.1px] right-0 absolute w-[92%] bg-gray-300 block"></span>
-      </div>
-      {/* Introduction */}
-      <div data-aos="fade-up" className="flex-1 w-full">
-        <p className="text-gray-700 font-medium w-full">
-          Here are my experiences and qualifications.
-        </p>
-      </div>
-      {/* Card wrapper for experiences and education */}
-      <div className="card-wrapper w-[90%] sm:w-full mt-5 flex md:flex-col sm:gap-5 mx-auto">
-        {/* Experience section */}
-        <div className="flex-1 flex items-center justify-center">
-          <fieldset
-            data-aos="zoom-in"
-            className="w-full p-5 py-1 sm:py-1"
+    <div id="resume" className="w-full bg-[#0f0f0f] py-16 px-4">
+      <div className="container mx-auto">
+        {/* Section Heading */}
+        <div data-aos="fade-up" className="section-heading mb-10">
+          <h3>Resume</h3>
+          <span className="divider"></span>
+          <p className="text-gray-400 font-medium text-sm mt-1">
+            My experiences, education, and achievements.
+          </p>
+        </div>
+
+        <div data-aos="fade-up" className="mb-8 flex items-center justify-between flex-wrap gap-3">
+          <p className="text-gray-300 text-sm">Download my full resume for detailed information.</p>
+          <a
+            href={resumePDF}
+            download
+            className="flex items-center gap-2 bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold hover:bg-yellow-300 transition-all text-sm"
           >
-            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-yellow-500">
-              Experience
-            </legend>
-            {/* Individual experiences */}
-            {[ /* Array of experience data */
-              {
-                role: "Full Stack Developer Intern",
-                company: "GPT Innovations, Inc",
-                period: "February 2024 - September 2024",
-                description: "Developed and launched two professional websites, elevating online sales by 754% and increasing web traffic by 54%. Implemented an admin panel to optimize data integration and automate workflows using MySQL. Led AI transcription integration for QuickScribe, enhancing medical documentation efficiency by 95% and spearheaded the use of FHIR and Meldrx APIs for healthcare system interoperability."
-              },
-            {
-              role: "Freelancer(Wix)",
-                company: "Datum Intelligence",
-                period: "September 2024 - October 2024",
-                description: "Managed and designed a professional Wix website, including store setup and customization. Utilized Wix Velo for enhanced website functionality and dynamic web elements. Improved user experience through responsive design and seamless store integration. Worked on SEO."
-              },
-            
-              {
-                role: "Full Stack Developer Intern",
-                company: "Visafied",
-                period: "October 2023 - November 2023",
-                description: "With a team of two, designed and developed a tourism website enhancing customer interaction through WhatsApp API. Led frontend and backend development efforts."
-              },
-              {
-                role: "Full Stack Developer Intern",
-                company: "Linsible Technologies",
-                period: "June 2023 - September 2023",
-                description: "Coordinated with a 13-member team to create user-friendly signup and login interfaces. Led API development for an Admin Control Panel, executing strategies to boost system performance."
-              }
-            ].map((exp, index) => (
-              <fieldset
-                key={index}
-                data-aos="zoom-in"
-                className="w-full p-5 py-12 sm:py-8 mt-4"
-              >
-                <div className="relative margin-8">
-                  <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-                    <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
-                    <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-                    <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
-                  </div>
-                  <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg">
-                    <h1 className="text-[1.4rem] font-semibold sm:text-xl">{exp.role}</h1>
-                    <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">{exp.company}</span>
-                    <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">{exp.period}</span>
-                    <p className="text-[.9rem] text-justify break-words text-gray-500">
-                      {exp.description}
-                    </p>
-                  </div>
-                </div>
-              </fieldset>
-            ))}
-          </fieldset>
+            Download CV <FiDownload />
+          </a>
         </div>
-        {/* Education section */}
-        <div className="flex-1 flex items-center justify-center">
-        <fieldset data-aos="zoom-in" className="w-[80%] p-5 py-12 sm:py-8 sm:w-full sm:p-2">
-    <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-yellow-500">
-        Education
-    </legend>
-    <div className="relative">
-        {/* <!-- Design --> */}
-        <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-            <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
-            <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-            <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
-        </div>
-        {/* <!-- Content for Bachelor of Technology --> */}
-        <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg">
-            <h1 className="text-[1.4rem] font-semibold sm:text-xl">Bachelor of Technology - Computer Science and Engineering</h1>
-            <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">Indian Institute of Information Technology, Vadodara</span>
-            <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">December 2021 - Expected July 2025</span>
-            <p className="text-[.9rem] text-justify break-words text-gray-500">
-                Pursuing a Bachelor's degree focused on full-stack development, data structures, and algorithms. Engaged in practical projects and team collaborations to enhance software development skills.
-            </p>
-        </div>
-        {/* <!-- Content for Higher Secondary Education --> */}
-        <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg mt-4">
-            <h1 className="text-[1.4rem] font-semibold sm:text-xl">XII - Higher Secondary Education</h1>
-            <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">S.J.S Public School, Raebareli, Uttar Pradesh</span>
-            <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">Achieved 93.2%</span>
-        </div>
-        {/* <!-- Content for Senior Secondary Education -->/ */}
-        <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg mt-4">
-            <h1 className="text-[1.4rem] font-semibold sm:text-xl">X - Senior Secondary Education</h1>
-            <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">S.J.S Public School, Raebareli, Uttar Pradesh</span>
-            <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">Achieved 95.8%</span>
-        </div>
-    </div>
-</fieldset>
-<fieldset data-aos="zoom-in" className="w-[80%] p-5 py-12 sm:py-8 sm:w-full sm:p-2">
-    <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-yellow-500">
-        Achievements
-    </legend>
-    <div className="relative">
-        {/* <!-- Design --> */}
-        <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-            <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
-            <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-            <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
-        </div>
-        {/* <!-- Content for Backend Developer Mentor --> */}
-        <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg">
-            <h1 className="text-[1.4rem] font-semibold sm:text-xl">Selected as Backend Developer Mentor</h1>
-            <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">SSIP 2.0 at IIIT Vadodara</span>
-        </div>
-        {/* <!-- Content for SSIP Gujarat Program --> */}
-        <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg mt-4">
-            <h1 className="text-[1.4rem] font-semibold sm:text-xl">Idea Accepted under SSIP Gujarat Program</h1>
-            <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">BUS KAROO - IIIT Vadodara</span>
-            <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">1st Category Recognition</span>
-        </div>
-    </div>
-</fieldset>
 
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-10">
+          {/* Experience */}
+          <div data-aos="fade-right">
+            <h4 className="text-yellow-400 font-black text-lg uppercase tracking-widest mb-6">Experience</h4>
+            <div className="flex flex-col gap-2">
+              {experiences.map((exp, i) => (
+                <Card key={i}>
+                  <h5 className="text-white font-bold text-base leading-tight group-hover:text-yellow-400 transition-colors">{exp.role}</h5>
+                  <span className="text-gray-400 text-xs font-semibold">{exp.company}</span>
+                  <span className="block text-yellow-500 text-xs font-bold mt-0.5">{exp.period}</span>
+                  <p className="text-gray-300 text-xs mt-2 leading-relaxed">{exp.description}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
 
+          {/* Education + Achievements */}
+          <div className="flex flex-col gap-8">
+            <div data-aos="fade-left">
+              <h4 className="text-yellow-400 font-black text-lg uppercase tracking-widest mb-6">Education</h4>
+              <div className="flex flex-col gap-2">
+                {education.map((edu, i) => (
+                  <Card key={i}>
+                    <h5 className="text-white font-bold text-base leading-tight group-hover:text-yellow-400 transition-colors">{edu.degree}</h5>
+                    <span className="text-gray-400 text-xs font-semibold">{edu.institution}</span>
+                    <span className="block text-yellow-500 text-xs font-bold mt-0.5">{edu.period}</span>
+                    {edu.detail && <p className="text-gray-300 text-xs mt-2 leading-relaxed">{edu.detail}</p>}
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div data-aos="fade-left">
+              <h4 className="text-yellow-400 font-black text-lg uppercase tracking-widest mb-6">Achievements</h4>
+              <div className="flex flex-col gap-2">
+                {achievements.map((ach, i) => (
+                  <Card key={i}>
+                    <h5 className="text-white font-bold text-base leading-tight group-hover:text-yellow-400 transition-colors">{ach.title}</h5>
+                    <span className="text-gray-400 text-xs font-semibold">{ach.sub}</span>
+                    {ach.tag && <span className="block text-yellow-500 text-xs font-bold mt-0.5">{ach.tag}</span>}
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-        
       </div>
     </div>
   );

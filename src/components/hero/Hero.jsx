@@ -1,16 +1,13 @@
 import React from "react";
 import {
-  AiFillTwitterCircle,
   AiFillGithub,
-  AiFillInstagram,
 } from "react-icons/ai";
-import { FaFacebook, FaLinkedinIn, FaPhoenixSquadron, FaPhone } from "react-icons/fa";
+import { FaLinkedinIn, FaPhone } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { FaPlay } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import resumePDF from "../../assets/Resume.pdf";
 import imagemine from "../../assets/IMG_1555.jpg";
-
 
 const Hero = () => {
   const gotoemail = () => {
@@ -18,128 +15,98 @@ const Hero = () => {
   };
 
   return (
-    <div id="home" className="bg-gradient-to-r from-green-200 to-blue-200 ">
-      <div className=" container mx-auto pt-5 h-[750px] md:h-[100vh] md:flex-col-reverse sm:h-[780px]  flex sm:flex-col-reverse sm:pt-0 ">
-        <div className=" left mt-4 md:mt-0 flex-1 flex flex-col justify-center gap-5 w-1/2 md:w-full md:py-2 sm:py-0">
-          <div className="info w-fit flex flex-col items-start justify-center gap-3 sm:gap-2">
-            <h2
-              data-aos="fade-up"
-              className=" text-5xl font-bold sm:text-[2rem]"
-            >
-              Hello, I'm Siddhant
+    <div id="home" className="relative min-h-screen bg-[#0f0f0f] overflow-hidden flex items-center">
+      {/* Background glow orbs */}
+      <div className="absolute top-[-80px] left-[-80px] w-[420px] h-[420px] bg-yellow-500 rounded-full filter blur-[160px] opacity-10 pointer-events-none"></div>
+      <div className="absolute bottom-[-80px] right-[-80px] w-[350px] h-[350px] bg-orange-500 rounded-full filter blur-[160px] opacity-10 pointer-events-none"></div>
+
+      <div className="container mx-auto pt-24 pb-12 px-4 flex items-center gap-10 md:flex-col-reverse sm:pt-20 sm:pb-8 sm:gap-6">
+        {/* Left content */}
+        <div className="flex-1 flex flex-col gap-6 md:items-center md:text-center">
+          <div className="flex flex-col gap-3">
+            <span className="text-yellow-400 font-bold tracking-widest text-sm uppercase">Software Engineer</span>
+            <h2 data-aos="fade-up" className="text-5xl font-black text-white leading-tight sm:text-3xl">
+              Hello, I'm<br />
+              <span className="gradient-text">Siddhant Kumar</span>
             </h2>
             <TypeAnimation
               data-aos="fade-up"
               sequence={[
-                "Web Developer",
+                "Full Stack Developer",
                 2000,
-                "Freelancer",
+                "Backend Engineer",
+                2000,
+                "AI & Automation",
                 2000,
                 "",
               ]}
-              speed={30}
-              wrapper="h2"
+              speed={35}
+              wrapper="h3"
               repeat={Infinity}
-              className="text-yellow-500 text-4xl font-bold sm:text-3xl"
+              className="text-yellow-400 text-2xl font-bold sm:text-xl"
             />
-            <p
-              // data-aos="fade-up"
-              className=" text-[1.1rem] font-medium w-3/4 md:w-full text-gray-600 sm:text-[.95rem]"
-            >
-            I am Siddhant Kumar Chaudhary, an innovative full-stack developer from IIIT Vadodara. I specialize in creating dynamic web applications and improving system integrations. My work includes leading AI transcription for QuickScribe and developing platforms that enhance user interaction and operational efficiency. I excel in technologies like React.js, Node.js, and MongoDB.
+            <p data-aos="fade-up" className="text-gray-300 text-base font-medium w-4/5 leading-relaxed md:w-full sm:text-sm">
+              Software Engineer at <span className="text-yellow-400 font-bold">Devsthan</span> with B.Tech from IIIT Vadodara. I've architected scalable platforms serving <span className="text-white font-semibold">10K+ users</span> at Devsthan, improved ATS matching to <span className="text-white font-semibold">~90% accuracy</span> at <span className="text-yellow-400 font-bold">NextgenApply</span>, and built AI healthcare systems including voice agents & FHIR integrations at <span className="text-yellow-400 font-bold">GPT Innovations</span>. I deliver high-performance full-stack apps using React, Spring Boot, MongoDB, and AWS.
             </p>
           </div>
-          <div data-aos="fade-up" className="buttons flex gap-5"  >
+
+          <div data-aos="fade-up" className="flex gap-4 flex-wrap md:justify-center">
             <a
               onClick={gotoemail}
-              
-              className=" bg-black text-[1rem] text-white px-10 py-2 sm:px-8 rounded-lg font-bold  hover:text-yellow-500"
+              className="cursor-pointer bg-yellow-400 text-black px-8 py-3 rounded-xl font-bold hover:bg-yellow-300 transition-all duration-300 animate-glow text-sm sm:px-6"
             >
-              <span > Contact me</span>
+              Contact me
             </a>
             <a
               href={resumePDF}
-              className="flex items-center gap-2 border- text-[1rem] bg-white border-black px-7 py-2 sm:px-6 rounded-lg font-bold  hover:text-yellow-500"
+              className="flex items-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-3 rounded-xl font-bold hover:bg-white/20 transition-all duration-300 text-sm sm:px-6"
               download
             >
-              <div className="flex items-center gap-1">
-                Resume <FiDownload />
-              </div>
+              Resume <FiDownload />
             </a>
           </div>
-          <div className="icons flex mt-5">
-            <ul
-              data-aos="fade-up"
-              data-aos-duration="1500"
-              className=" flex gap-5"
-            >
+
+          <div data-aos="fade-up" data-aos-duration="1500">
+            <ul className="flex gap-5">
               <li>
-                <a target="_blank" href="https://github.com/sid142003">
-                  {" "}
-                  <AiFillGithub className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125" />{" "}
+                <a target="_blank" href="https://github.com/sid142003" className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/15 hover:bg-yellow-400 hover:border-yellow-400 hover:text-black text-white transition-all duration-300">
+                  <AiFillGithub className="text-xl" />
                 </a>
               </li>
               <li>
-                <a target="_blank" href="https://www.linkedin.com/in/siddhantkumar14/">
-                  {" "}
-                
-                  <FaLinkedinIn className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125 " />{" "}
-                </a>
-              </li>
-              {/* <li>
-                <a href="">
-                  {" "}
-                  <AiFillInstagram className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
-                </a>
-              </li> */}
-              {/* <li>
-                <a href="">
-                  {" "}
-                  <FaFacebook className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
+                <a target="_blank" href="https://www.linkedin.com/in/siddhantkumar14/" className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/15 hover:bg-yellow-400 hover:border-yellow-400 hover:text-black text-white transition-all duration-300">
+                  <FaLinkedinIn className="text-xl" />
                 </a>
               </li>
               <li>
-                <a href="">
-                  {" "}
-                  <AiFillTwitterCircle className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
-                </a>
-              </li> */}
-              <li>
-                <a href="tel:+918090453205">
-                  <FaPhone className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
+                <a href="tel:+918090453205" className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/15 hover:bg-yellow-400 hover:border-yellow-400 hover:text-black text-white transition-all duration-300">
+                  <FaPhone className="text-lg" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div className="right  top-5 flex-1 flex items-center justify-center md:items-end sm:items-end">
-          <div className="relative h-[88%] w-fit flex items-center sm:items-end ">
+
+        {/* Right: profile image */}
+        <div className="flex-1 flex items-center justify-center relative md:w-full">
+          <div className="relative w-[340px] h-[400px] sm:w-[240px] sm:h-[290px]">
+            {/* Glowing ring */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-yellow-400 to-orange-500 blur-md opacity-30"></div>
             <img
-            data-aos="fade-up"
-              className=" h-[90%]  w-full object-cover md:h-[95%] md:m-auto sm:m-0  "
+              data-aos="fade-left"
+              className="relative z-10 w-full h-full object-cover rounded-3xl border-2 border-yellow-400/40 animate-float"
               src={imagemine}
-              alt="mine"
-              style={{ borderRadius: "2%" , boxShadow: "0 0 10px 5px rgba(0, 0, 0, 0.2)", border: "5px solid white" ,quality: "100" ,
-                height: "80%", width: "100%"
-
-
-               
-                
-
-                }}
-              
-              
+              alt="Siddhant Kumar"
             />
-            <div className=" absolute bottom-10 md:bottom-3 right-8 md:right-2">
-              <div data-aos="zoom-in" data-aos-duration="1000"  className=" relative cursor-pointer">
+            {/* Spinning badge */}
+            <div className="absolute bottom-4 right-[-24px] sm:right-0 z-20">
+              <div data-aos="zoom-in" data-aos-duration="1000" className="relative cursor-pointer">
                 <img
-                  className=" w-[135px] md:w-[90px] circle-text"
+                  className="w-[100px] sm:w-[70px] circle-text"
                   src="https://ik.imagekit.io/imgkitt/tr:w-400/Full_Stack_Developer2.png?updatedAt=1683134009107"
                   alt=""
                 />
-                <FaPlay
-                  className=" text-black absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
-                />
+                <FaPlay className="text-black absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-xs" />
               </div>
             </div>
           </div>
